@@ -1,0 +1,52 @@
+* {
+  font-family: $basefont;
+  outline: 0 !important;
+  @include selectnone;
+  @include box-sizing;
+  &:before,
+  &:after {
+    outline: 0 !important;
+    @include box-sizing;
+  }
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: $full;
+  -ms-text-size-adjust: $full;
+  overflow: hidden;
+  font-size: 15px;
+  height: $full;
+  width: $full;
+  clear: both;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $basefont;
+  line-height: 1.5;
+  margin: 0 auto;
+  padding: 0em;
+  width: $full;
+  clear: both;
+}
+h1 {
+  line-height: 1.1;
+}
+
+button {
+  -webkit-appearance: none;
+  border: 0 none;
+}
+
+a {
+  text-decoration: none;
+  color: $off_white;
+}
+
+a,
+button {
+  @include transition(all .3s ease-in-out);
+}
