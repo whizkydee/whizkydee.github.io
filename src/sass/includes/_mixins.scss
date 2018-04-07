@@ -90,3 +90,13 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+@mixin placeholdercolor {
+  [placeholder] { color: var(--placeholder-color); }
+  ::placeholder { color: var(--placeholder-color); }
+  ::-webkit-input-placeholder { color: var(--placeholder-color); }
+  ::-moz-placeholder { color: var(--placeholder-color); }
+  :-moz-placeholder { color: var(--placeholder-color); }
+  ::-ms-input-placeholder { color: var(--placeholder-color); }
+  :-ms-input-placeholder { color: var(--placeholder-color); }
+}

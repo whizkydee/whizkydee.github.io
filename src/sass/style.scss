@@ -5,7 +5,8 @@
   './includes/variables',
   './includes/mixins',
   './includes/fonts',
-  './includes/base';
+  './includes/base',
+  './includes/contact';
 
 :root {
   --home-bg: #7e57c2;
@@ -20,20 +21,42 @@
   --contact-bg: #666699;
   --contact-border: #5B5B8E;
 
-  --placeholder-color: #eeffff;
+  --placeholder-color: rgb(238, 255, 255, .8);
+  --form-base: rgba(132, 132, 183, .4);
+}
+
+html {
+  @include transition(background-color .3s ease);
+  background-color: var(--home-border);
+  height: 100vh;
+  @media (orientation: landscape)
+    and (min-height: 700px) {
+    overflow: hidden;
+  }
 }
 
 body {
-  border: 20px solid var(--home-border);
-  @include transition(background-color 1s ease .1s, border .3s ease);
+  @include transition(background-color 1s ease .1s);
+  @include transform(translate(-50%, -50%));
   background-color: var(--home-bg);
+  position: absolute;
   color: $off_white;
-  height: 100vh;
+  height: 95vh;
+  width: 97vw;
+  left: 50%;
+  top: 50%;
+  @media (max-width: 700px) {
+    height: 98vh;
+  }
 }
 
 header {
   position: relative;
   padding: 30px 50px;
+  @media (max-width: 700px) {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
   h3 {
     display: inline-block;
     margin: 0;
@@ -51,7 +74,13 @@ nav {
     margin-right: 10px;
     &:last-of-type { margin-right: 0; }
     a {
+      @include transition(.2s linear);
       display: block;
+      &:hover { font-weight: bold; }
+      &.active {
+        font-size: x-large;
+        font-weight: bold;
+      }
     }
   }
 }
@@ -61,7 +90,11 @@ main {
   padding: 20px 50px;
   position: relative;
   text-align: left;
-  a { font-weight: bold; }
+  @media (max-width: 700px) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  a:not(.project) { font-weight: bold; }
   h1 {
     text-transform: capitalize;
     position: relative;
@@ -72,8 +105,13 @@ main {
     text-align: left;
     line-height: 2;
     width: 70%;
+    @media (max-width: 1070px) {
+      width: 90%;
+    }
   }
-  a[data-navigator]:after { content: " →"; }
+  a[href="/#about"]:after {
+    content: " →";
+  }
 }
 
 aside {
@@ -82,8 +120,12 @@ aside {
   text-align: center;
   padding: 5px 10px;
   margin: 0 auto;
-  bottom: 40px;
+  bottom: 20px;
+  width: 100%;
   left: 50%;
+  @media (max-width: 700px) {
+    bottom: 10px;
+  }
   a {
     text-transform: uppercase;
     letter-spacing: .05em;
@@ -96,3 +138,5 @@ aside {
     }
   }
 }
+
+@import './includes/mq';

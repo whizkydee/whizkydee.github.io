@@ -1,8 +1,10 @@
 * {
   font-family: $basefont;
-  outline: 0 !important;
   @include selectnone;
   @include box-sizing;
+  &:not(input) {
+    outline: 0 !important;
+  }
   &:before,
   &:after {
     outline: 0 !important;
@@ -15,10 +17,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: $full;
   -ms-text-size-adjust: $full;
-  overflow: hidden;
+  overflow-x: hidden;
   font-size: 15px;
-  height: $full;
-  width: $full;
   clear: both;
 }
 
@@ -29,7 +29,6 @@ body {
   line-height: 1.5;
   margin: 0 auto;
   padding: 0em;
-  width: $full;
   clear: both;
 }
 h1 {
@@ -49,4 +48,8 @@ a {
 a,
 button {
   @include transition(all .3s ease-in-out);
+}
+
+textarea {
+  resize: none;
 }
