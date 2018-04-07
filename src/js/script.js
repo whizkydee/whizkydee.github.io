@@ -1,22 +1,32 @@
 const navigators = document.querySelectorAll('[data-navigator]')
+  , hash = window.location.hash.replace('#', '')
+  , pageContent = document.querySelector('main')
 
-const tabChange = (e) => {
-  e.preventDefault()
-  let activeText = e.target.textContent
+const switchTabTo = (title) => {
+  let tabTitle = title
+  , currentTab = data[tabTitle]
 
-  document.body.style.setProperty('background-color', `var(--${activeText}-bg)`)
-  document.body.style.setProperty('border-color', `var(--${activeText}-border)`)
+  document.documentElement.style.setProperty('background-color', `var(--${tabTitle}-border)`)
+  document.body.style.setProperty('background-color', `var(--${tabTitle}-bg)`)
+  pageContent.setAttribute('class', currentTab.name)
 
-  document.querySelector('main').innerHTML = data[activeText].content
-  let styleElem = document.createElement('style')
-  styleElem.type = 'text/css'
-  styleElem.textContent = data[activeText].style
-
-  document.body.appendChild(styleElem)
+  if (pageContent.innerHTML !== currentTab.content)
+    pageContent.innerHTML = currentTab.content
 }
 
 navigators.forEach(link => {
+  link.addEventListener('click', e =>
+    switchTabTo(e.target.getAttribute('data-navigator'))
+)})
 
-  link.addEventListener('click', tabChange)
+const restorePage = () => {
+  ['home', 'about', 'contact']
+  .forEach((page, i) => {
+    if (hash === page) switchTabTo(hash)
+  })
+}
 
-})
+document.querySelector('header > a')
+  .addEventListener('click', () => switchTabTo('home'))
+
+document.addEventListener('DOMContentLoaded', restorePage)

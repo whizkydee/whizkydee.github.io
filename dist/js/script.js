@@ -1,24 +1,35 @@
 'use strict';
 
-var navigators = document.querySelectorAll('[data-navigator]');
+var navigators = document.querySelectorAll('[data-navigator]'),
+    hash = window.location.hash.replace('#', ''),
+    pageContent = document.querySelector('main');
 
-var tabChange = function tabChange(e) {
-  e.preventDefault();
-  var activeText = e.target.textContent;
+var switchTabTo = function switchTabTo(title) {
+  var tabTitle = title,
+      currentTab = data[tabTitle];
 
-  document.body.style.setProperty('background-color', 'var(--' + activeText + '-bg)');
-  document.body.style.setProperty('border-color', 'var(--' + activeText + '-border)');
+  document.documentElement.style.setProperty('background-color', 'var(--' + tabTitle + '-border)');
+  document.body.style.setProperty('background-color', 'var(--' + tabTitle + '-bg)');
+  pageContent.setAttribute('class', currentTab.name);
 
-  document.querySelector('main').innerHTML = data[activeText].content;
-  var styleElem = document.createElement('style');
-  styleElem.type = 'text/css';
-  styleElem.textContent = data[activeText].style;
-
-  document.body.appendChild(styleElem);
+  if (pageContent.innerHTML !== currentTab.content) pageContent.innerHTML = currentTab.content;
 };
 
 navigators.forEach(function (link) {
-
-  link.addEventListener('click', tabChange);
+  link.addEventListener('click', function (e) {
+    return switchTabTo(e.target.getAttribute('data-navigator'));
+  });
 });
+
+var restorePage = function restorePage() {
+  ['home', 'about', 'contact'].forEach(function (page, i) {
+    if (hash === page) switchTabTo(hash);
+  });
+};
+
+document.querySelector('header > a').addEventListener('click', function () {
+  return switchTabTo('home');
+});
+
+document.addEventListener('DOMContentLoaded', restorePage);
 //# sourceMappingURL=script.js.map
