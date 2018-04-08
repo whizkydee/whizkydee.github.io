@@ -42,6 +42,10 @@ var restoreTab = function restoreTab() {
   });
 };
 
+var ua = navigator.userAgent;
+var isAndroid = ua.indexOf('Mozilla/5.0') > -1 && ua.indexOf('Android ') > -1 && ua.indexOf('AppleWebKit') > -1 && !(ua.indexOf('Chrome') > -1);
+if (isAndroid) document.querySelector('link[rel="icon"]').href = 'images/favicon-white.png';
+
 document.querySelector('header > a').addEventListener('click', function () {
   return navigators[0].click();
 });
