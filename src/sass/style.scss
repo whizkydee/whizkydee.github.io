@@ -15,13 +15,10 @@
   --about-bg: #169AE1;
   --about-border: #0E92D9;
 
-  --projects-bg: #37B7B7;
-  --projects-border: #2EAEAE;
-
   --contact-bg: #666699;
   --contact-border: #5B5B8E;
 
-  --color-fade: rgb(238, 255, 255, .8);
+  --color-fade: rgba(238, 255, 255, .8);
   --form-base: rgba(132, 132, 183, .4);
 }
 
@@ -75,6 +72,7 @@ header {
 }
 
 nav {
+  --active-color: rgba(238, 255, 255, .2);
   position: relative;
   margin-top: -15px;
   float: right;
@@ -87,9 +85,9 @@ nav {
       @include transition(border-color .3s linear);
       border-bottom: 2px solid transparent;
       display: block;
-      &:hover { border-color: var(--color-fade); }
+      &:hover { border-color: var(--active-color); }
       &.active {
-        border-color: var(--color-fade);
+        border-color: var(--active-color);
         font-weight: bold;
       }
     }
