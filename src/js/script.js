@@ -1,4 +1,4 @@
-const navigators = document.querySelectorAll('[data-navigator]')
+const navigators = [].slice.call(document.querySelectorAll('[data-navigator]'))
   , hash = window.location.hash.replace('#', '')
   , pageContent = document.querySelector('main')
 
@@ -12,6 +12,10 @@ const switchTabTo = (title) => {
 
   if (pageContent.innerHTML !== currentTab.content)
     pageContent.innerHTML = currentTab.content
+
+  document.querySelector('meta[name="theme-color"]')
+    .setAttribute('content',
+      getComputedStyle(document.documentElement).getPropertyValue(`--${tabTitle}-bg`))
 }
 
 navigators.forEach(link => {

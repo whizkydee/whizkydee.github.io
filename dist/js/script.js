@@ -1,6 +1,6 @@
 'use strict';
 
-var navigators = document.querySelectorAll('[data-navigator]'),
+var navigators = [].slice.call(document.querySelectorAll('[data-navigator]')),
     hash = window.location.hash.replace('#', ''),
     pageContent = document.querySelector('main');
 
@@ -13,6 +13,8 @@ var switchTabTo = function switchTabTo(title) {
   pageContent.setAttribute('class', currentTab.name);
 
   if (pageContent.innerHTML !== currentTab.content) pageContent.innerHTML = currentTab.content;
+
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--' + tabTitle + '-bg'));
 };
 
 navigators.forEach(function (link) {
