@@ -33,6 +33,9 @@ html {
     and (min-height: 700px) {
     overflow: hidden;
   }
+  @media (max-height: 635px) {
+    overflow: hidden;
+  }
 }
 
 body {
@@ -47,6 +50,9 @@ body {
   top: 50%;
   @media (max-width: 700px) {
     height: 95vh;
+  }
+  @media (max-height: 635px) {
+    overflow-y: scroll;
   }
 }
 
@@ -96,8 +102,9 @@ main {
   position: relative;
   text-align: left;
   @media (max-width: 700px) {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: .9em;
   }
   a:not(.project) { font-weight: bold; }
   h1 {
@@ -112,6 +119,9 @@ main {
     width: 70%;
     @media (max-width: 1070px) {
       width: 90%;
+    }
+    @media (max-width: 700px) {
+      width: 100%;
     }
   }
   a[href="/#about"]:after {
@@ -128,6 +138,9 @@ aside {
   bottom: 10px;
   width: 100%;
   left: 50%;
+  @media (max-height: 635px) {
+    display: none;
+  }
   a {
     text-transform: uppercase;
     letter-spacing: .06em;
@@ -140,5 +153,3 @@ aside {
     }
   }
 }
-
-@import './includes/mq';

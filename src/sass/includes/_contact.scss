@@ -5,7 +5,8 @@ form > *:not([type="submit"]) {
   position: relative;
 }
 
-textarea, input:not([type="submit"]) {
+textarea,
+input:not([type="submit"]) {
   transition: border-color .2s ease;
   border-color: var(--form-base);
   background-color: transparent;
@@ -17,6 +18,9 @@ textarea, input:not([type="submit"]) {
   width: 50vw;
   @media (max-width: 1080px) {
     width: 65vw;
+  }
+  @media (max-width: 700px) {
+    width: 80vw;
   }
 }
 
