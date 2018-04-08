@@ -1,8 +1,10 @@
 const navigators = [].slice.call(document.querySelectorAll('[data-navigator]'))
-  , hash = window.location.hash.replace('#', '')
-  , pageContent = document.querySelector('main')
+, aboutLink = navigators[1]
+, hash = window.location.hash.replace('#', '')
+, pageContent = document.querySelector('main')
 
-const switchTabTo = (title) => {
+const switchTabTo = (target,
+  title = target.getAttribute('data-navigator')) => {
   let tabTitle = title
   , currentTab = data[tabTitle]
 
@@ -16,21 +18,26 @@ const switchTabTo = (title) => {
   document.querySelector('meta[name="theme-color"]')
     .setAttribute('content',
       getComputedStyle(document.documentElement).getPropertyValue(`--${tabTitle}-bg`))
+
+  if (!target.classList.contains('active')) {
+    let activeLink = document.querySelector('.active')
+    if (activeLink) activeLink.classList.remove('active')
+    target.classList.add('active')
+  }
 }
 
-navigators.forEach(link => {
-  link.addEventListener('click', e =>
-    switchTabTo(e.target.getAttribute('data-navigator'))
-)})
+const pages = ['home', 'about', 'contact']
+if (!pages.includes(hash) || !hash) navigators[0].className = 'active'
+navigators.forEach(link =>
+  link.addEventListener('click', e => switchTabTo(e.target))
+)
 
-const restorePage = () => {
-  ['home', 'about', 'contact']
-  .forEach((page, i) => {
-    if (hash === page) switchTabTo(hash)
+const restoreTab = () => {
+  pages.forEach((page, i) => {
+    if (hash === page) navigators[i].click()
   })
 }
 
 document.querySelector('header > a')
-  .addEventListener('click', () => switchTabTo('home'))
-
-document.addEventListener('DOMContentLoaded', restorePage)
+  .addEventListener('click', () => navigators[0].click())
+document.addEventListener('DOMContentLoaded', restoreTab)
