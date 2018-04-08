@@ -1,11 +1,11 @@
 'use strict';
 
-var navigators = [].slice.call(document.querySelectorAll('[data-navigator]')),
-    aboutLink = navigators[1],
-    hash = window.location.hash.replace('#', ''),
-    pageContent = document.querySelector('main');
+var navigators = [].slice.call(document.querySelectorAll('[data-navigator]'));
+var aboutLink = navigators[1];
+var hash = window.location.hash.replace('#', '');
+var pageContent = document.querySelector('main');
 
-var switchTabTo = function switchTabTo(target) {
+var navigateTo = function navigateTo(target) {
   var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : target.getAttribute('data-navigator');
 
   var tabTitle = title,
@@ -27,10 +27,11 @@ var switchTabTo = function switchTabTo(target) {
 };
 
 var pages = ['home', 'about', 'contact'];
+
 if (!pages.includes(hash) || !hash) navigators[0].className = 'active';
 navigators.forEach(function (link) {
   return link.addEventListener('click', function (e) {
-    return switchTabTo(e.target);
+    return navigateTo(e.target);
   });
 });
 

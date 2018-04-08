@@ -1,9 +1,9 @@
 const navigators = [].slice.call(document.querySelectorAll('[data-navigator]'))
-, aboutLink = navigators[1]
-, hash = window.location.hash.replace('#', '')
-, pageContent = document.querySelector('main')
+const aboutLink = navigators[1]
+const hash = window.location.hash.replace('#', '')
+const pageContent = document.querySelector('main')
 
-const switchTabTo = (target,
+const navigateTo = (target,
   title = target.getAttribute('data-navigator')) => {
   let tabTitle = title
   , currentTab = data[tabTitle]
@@ -27,9 +27,10 @@ const switchTabTo = (target,
 }
 
 const pages = ['home', 'about', 'contact']
+
 if (!pages.includes(hash) || !hash) navigators[0].className = 'active'
 navigators.forEach(link =>
-  link.addEventListener('click', e => switchTabTo(e.target))
+  link.addEventListener('click', e => navigateTo(e.target))
 )
 
 const restoreTab = () => {
