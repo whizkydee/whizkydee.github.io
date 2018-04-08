@@ -12,11 +12,12 @@ var navigateTo = function navigateTo(target) {
       currentTab = data[tabTitle];
 
   document.documentElement.style.setProperty('background-color', 'var(--' + tabTitle + '-border)');
+  document.title = title.charAt(0).toUpperCase() + title.slice(1) + ' \xB7 Olaolu Olawuyi';
   document.body.style.setProperty('background-color', 'var(--' + tabTitle + '-bg)');
+
   pageContent.setAttribute('class', currentTab.name);
 
-  if (pageContent.innerHTML !== currentTab.content) pageContent.innerHTML = currentTab.content;
-
+  pageContent.innerHTML = pageContent.innerHTML !== currentTab.content ? currentTab.content : pageContent.innerHTML;
   document.querySelector('meta[name="theme-color"]').setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--' + tabTitle + '-bg'));
 
   if (!target.classList.contains('active')) {
