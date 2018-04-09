@@ -39,14 +39,11 @@ const restoreTab = () => {
   })
 }
 
-const ua = navigator.userAgent
-const isAndroid = (
-  (ua.indexOf('Mozilla/5.0') > -1
-  && ua.indexOf('Android ') > -1
-  && ua.indexOf('AppleWebKit') > -1)
-  && !(ua.indexOf('Chrome') > -1)
-)
-if (isAndroid) document.querySelector('link[rel="icon"]').href = 'images/favicon-white.png'
+const favicons = document.querySelectorAll('link[rel="icon"]')
+favicons.forEach(favicon => {
+  favicon.href = (/Android/.test(navigator.userAgent))
+    ? 'images/favicon-white.png' : favicon.href
+})
 
 document.querySelector('header > a')
   .addEventListener('click', () => navigators[0].click())
