@@ -104,6 +104,9 @@ main {
     padding-left: 20px;
     font-size: .9em;
   }
+  &.about a, b {
+    font-weight: 500 !important;
+  }
   a:not(.project) { font-weight: bold; }
   h1 {
     text-transform: capitalize;

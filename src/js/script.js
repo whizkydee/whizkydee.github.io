@@ -2,6 +2,7 @@ const navigators = [].slice.call(document.querySelectorAll('[data-navigator]'))
 const aboutLink = navigators[1]
 const hash = window.location.hash.replace('#', '')
 const pageContent = document.querySelector('main')
+const body = document.body
 
 const navigateTo = (target,
   title = target.getAttribute('data-navigator')) => {
@@ -10,14 +11,15 @@ const navigateTo = (target,
 
   document.documentElement.style.setProperty('background-color', `var(--${tabTitle}-border)`)
   document.title = `${title.charAt(0).toUpperCase() + title.slice(1)} · Olaolu Olawuyi`
-  document.body.style.setProperty('background-color', `var(--${tabTitle}-bg)`)
+  body.style.setProperty('background-color', `var(--${tabTitle}-bg)`)
 
-  document.body.className = (document.body.className !== currentTab.name)
-    ? currentTab.name : document.body.className
+  body.className = (body.className !== currentTab.name) ? currentTab.name : body.className
+  pageContent.className = (pageContent.className !== currentTab.name)
+    ? currentTab.name : pageContent.className
 
-  pageContent.innerHTML = (pageContent.innerHTML !== currentTab.content)
+  pageContent.innerHTML = pageContent.innerHTML !== currentTab.content
     ? currentTab.content : pageContent.innerHTML
-  document.querySelector('meta[name="theme-color"]') .setAttribute('content',
+  document.querySelector('meta[name="theme-color"]').setAttribute('content',
     getComputedStyle(document.documentElement).getPropertyValue(`--${tabTitle}-bg`))
 
   if (!target.classList.contains('active')) {
@@ -41,9 +43,9 @@ const restoreTab = () => {
 }
 
 const favicons = [].slice.call(document.querySelectorAll('link[rel="icon"]'))
-favicons.forEach(favicon => {
+favicons.forEach(favicon =>
   favicon.href = (/Android/i.test(navigator.userAgent)) ? 'images/favicon-white.png' : favicon.href
-})
+)
 
 window.addEventListener('popstate', () => {
   const hash = location.hash.replace('#', '')
