@@ -42,8 +42,7 @@ const restoreTab = () => {
 
 const favicons = [].slice.call(document.querySelectorAll('link[rel="icon"]'))
 favicons.forEach(favicon => {
-  favicon.href = (/Android/i.test(navigator.userAgent))
-    ? 'images/favicon-white.png' : favicon.href
+  favicon.href = (/Android/i.test(navigator.userAgent)) ? 'images/favicon-white.png' : favicon.href
 })
 
 window.addEventListener('popstate', () => {
