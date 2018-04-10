@@ -26,11 +26,8 @@ html {
   @include transition(background-color .3s ease);
   background-color: var(--home-border);
   height: 100vh;
-  @media (orientation: landscape)
-    and (min-height: 700px) {
-    overflow: hidden;
-  }
-  @media (max-height: 635px) {
+  @media (orientation: landscape) and
+  (min-height: 700px), (max-height: 635px) {
     overflow: hidden;
   }
 }
@@ -50,6 +47,9 @@ body {
   }
   @media (max-height: 635px) {
     overflow-y: scroll;
+    &.home aside {
+      display: none;
+    }
   }
 }
 
@@ -128,16 +128,22 @@ main {
 }
 
 aside {
-  @include transform(translate(-50%));
-  position: absolute;
   text-align: center;
   padding: 5px 10px;
   margin: 0 auto;
-  bottom: 10px;
   width: 100%;
-  left: 50%;
+  @media (min-height: 636px) {
+    @include transform(translate(-50%));
+    bottom: 10px;
+    position: absolute;
+    left: 50%;
+  }
   @media (max-height: 635px) {
-    display: none;
+    @include transform(none);
+    font-size: .88em;
+    bottom: 2vh;
+    position: relative;
+    left: 0;
   }
   a {
     text-transform: uppercase;
