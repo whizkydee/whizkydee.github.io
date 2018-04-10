@@ -65,3 +65,4 @@ typings/
 # dotenv environment variables file
 .env
 
+.well-known/.pki-validation/cert.txt
