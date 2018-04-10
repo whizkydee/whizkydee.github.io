@@ -15,7 +15,7 @@ var navigateTo = function navigateTo(target) {
   document.title = title.charAt(0).toUpperCase() + title.slice(1) + ' \xB7 Olaolu Olawuyi';
   document.body.style.setProperty('background-color', 'var(--' + tabTitle + '-bg)');
 
-  pageContent.setAttribute('class', currentTab.name);
+  document.body.className = document.body.className !== currentTab.name ? currentTab.name : document.body.className;
 
   pageContent.innerHTML = pageContent.innerHTML !== currentTab.content ? currentTab.content : pageContent.innerHTML;
   document.querySelector('meta[name="theme-color"]').setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--' + tabTitle + '-bg'));
@@ -42,9 +42,14 @@ var restoreTab = function restoreTab() {
   });
 };
 
-var favicons = document.querySelectorAll('link[rel="icon"]');
+var favicons = [].slice.call(document.querySelectorAll('link[rel="icon"]'));
 favicons.forEach(function (favicon) {
-  favicon.href = /Android/.test(navigator.userAgent) ? 'images/favicon-white.png' : favicon.href;
+  favicon.href = /Android/i.test(navigator.userAgent) ? 'images/favicon-white.png' : favicon.href;
+});
+
+window.addEventListener('popstate', function () {
+  var hash = location.hash.replace('#', '');
+  if (hash) navigateTo(document.querySelector('[data-navigator=' + hash + ']'));else navigateTo(navigators[0]);
 });
 
 document.querySelector('header > a').addEventListener('click', function () {
