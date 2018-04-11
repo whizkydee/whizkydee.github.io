@@ -45,8 +45,9 @@ body {
   @media (max-width: 700px) {
     height: 95vh;
   }
-  @media (max-height: 635px) {
+  @media (orientation: portrait) and (max-height: 700px) {
     overflow-y: scroll;
+    &.about aside,
     &.home aside {
       display: none;
     }
@@ -85,7 +86,9 @@ nav {
       @include transition(border-color .3s linear);
       border-bottom: 2px solid transparent;
       display: block;
-      &:hover { border-color: var(--active-color); }
+      &:hover {
+        border-color: var(--active-color);
+      }
       &.active {
         border-color: var(--active-color);
         font-weight: bold;
@@ -104,8 +107,15 @@ main {
     padding-left: 20px;
     font-size: .9em;
   }
-  &.about a, b {
-    font-weight: 500 !important;
+  &.about {
+    @media (min-width: 1000px) {
+      p {
+        font-size: .96em;
+      }
+    }
+    a, b {
+      font-weight: 500 !important;
+    }
   }
   a:not(.project) { font-weight: bold; }
   h1 {
@@ -139,8 +149,11 @@ aside {
   bottom: 10px;
   width: 100%;
   left: 50%;
-  @media (max-height: 635px) {
-    display: none;
+  @media (orientation: portrait) and (max-height: 700px) {
+    @include transform(none);
+    position: relative;
+    margin-top: 10px;
+    left: 0;
   }
   a {
     text-transform: uppercase;
