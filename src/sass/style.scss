@@ -164,6 +164,10 @@ aside {
     margin-right: 15px;
     font-weight: 900;
     font-size: .75em;
+    @media (max-width: 380px) {
+      font-size: .65em;
+      margin-right: 8px;
+    }
     &:nth-of-type(4) { margin-right: 0; }
     svg {
       vertical-align: top;
@@ -171,6 +175,10 @@ aside {
       fill: $off_white;
       height: 14px;
       width: 14px;
+      @media (max-width: 380px) {
+        @include transform(scale(.85));
+        vertical-align: text-bottom;
+      }
     }
   }
 }

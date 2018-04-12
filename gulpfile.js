@@ -24,7 +24,7 @@ gulp.task('sass', () => {
     .pipe(sass({outputStyle: 'compressed'})
     .on('error', sass.logError))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/css'))
+    .pipe(gulp.dest('dest/css'))
 })
 
 gulp.task('transpile', () => {
@@ -33,7 +33,7 @@ gulp.task('transpile', () => {
     .pipe(babel())
     .on('error', err => console.log(err))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/js'))
+    .pipe(gulp.dest('dest/js'))
 })
 
 gulp.task( 'server', () => connect.server({livereload: true}) )
