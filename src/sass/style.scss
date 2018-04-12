@@ -37,26 +37,26 @@ body {
   @include transform(translate(-50%, -50%));
   background-color: var(--home-bg);
   position: absolute;
+  overflow-y: scroll;
   color: $off_white;
   height: 95vh;
   width: 97vw;
   left: 50%;
   top: 50%;
+  @media (orientation: landscape) and (min-height: 677px) {
+    overflow-y: hidden;
+  }
   @media (max-width: 700px) {
     height: 95vh;
-  }
-  @media (orientation: portrait) and (max-height: 700px) {
-    overflow-y: scroll;
-    &.about aside,
-    &.home aside {
-      display: none;
-    }
   }
 }
 
 header {
   position: relative;
   padding: 30px 50px;
+  @media (max-width: 840px) {
+    padding: 30px;
+  }
   @media (max-width: 700px) {
     padding-right: 20px;
     padding-left: 20px;
@@ -102,6 +102,10 @@ main {
   padding: 20px 50px;
   position: relative;
   text-align: left;
+  @media (max-width: 840px) {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
   @media (max-width: 700px) {
     padding-right: 20px;
     padding-left: 20px;
@@ -117,7 +121,9 @@ main {
       font-weight: 500 !important;
     }
   }
-  a:not(.project) { font-weight: bold; }
+  a:not(.project) {
+    font-weight: bold;
+  }
   h1 {
     text-transform: capitalize;
     position: relative;
@@ -146,15 +152,10 @@ aside {
   position: absolute;
   padding: 5px 10px;
   margin: 0 auto;
+  display: none;
   bottom: 10px;
   width: 100%;
   left: 50%;
-  @media (orientation: portrait) and (max-height: 700px) {
-    @include transform(none);
-    position: relative;
-    margin-top: 10px;
-    left: 0;
-  }
   a {
     text-transform: uppercase;
     letter-spacing: .06em;
