@@ -165,8 +165,8 @@ aside {
     font-weight: 900;
     font-size: .75em;
     @media (max-width: 380px) {
-      font-size: .65em;
       margin-right: 8px;
+      font-size: .65em;
     }
     &:nth-of-type(4) { margin-right: 0; }
     svg {
