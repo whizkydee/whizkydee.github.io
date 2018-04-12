@@ -4,7 +4,7 @@ const hash = window.location.hash.replace('#', '')
 const pageContent = document.querySelector('main')
 const body = document.body
 
-const navigateTo = (target,
+const routeTo = (target,
   title = target.getAttribute('data-navigator')) => {
   let tabTitle = title
   , currentTab = data[tabTitle]
@@ -33,7 +33,7 @@ const pages = ['home', 'about', 'contact']
 
 if (!pages.includes(hash) || !hash) navigators[0].className = 'active'
 navigators.forEach(link =>
-  link.addEventListener('click', e => navigateTo(e.target))
+  link.addEventListener('click', e => routeTo(e.target))
 )
 
 const restoreTab = () => {
@@ -49,10 +49,24 @@ favicons.forEach(favicon =>
 
 window.addEventListener('popstate', () => {
   const hash = location.hash.replace('#', '')
-  if (hash) navigateTo(document.querySelector(`[data-navigator=${hash}]`))
-  else navigateTo(navigators[0])
+  if (hash) routeTo(document.querySelector(`[data-navigator=${hash}]`))
+  else routeTo(navigators[0])
 })
+
+const positionSocialIcons = () => {
+  let bodyHeight = document.body.clientHeight
+  let elemsHeight = document.querySelector('header').clientHeight
+    + document.querySelector('main').clientHeight
+  let availHeight = bodyHeight - elemsHeight
+  let social = document.querySelector('aside')
+
+  if (bodyHeight > elemsHeight)
+    social.style.setProperty('margin-top', `${availHeight - 70}px`)
+}
 
 document.querySelector('header > a')
   .addEventListener('click', () => navigators[0].click())
+
 document.addEventListener('DOMContentLoaded', restoreTab)
+document.addEventListener('DOMContentLoaded', positionSocialIcons)
+window.addEventListener('resize', positionSocialIcons)

@@ -6,7 +6,7 @@ var hash = window.location.hash.replace('#', '');
 var pageContent = document.querySelector('main');
 var body = document.body;
 
-var navigateTo = function navigateTo(target) {
+var routeTo = function routeTo(target) {
   var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : target.getAttribute('data-navigator');
 
   var tabTitle = title,
@@ -34,7 +34,7 @@ var pages = ['home', 'about', 'contact'];
 if (!pages.includes(hash) || !hash) navigators[0].className = 'active';
 navigators.forEach(function (link) {
   return link.addEventListener('click', function (e) {
-    return navigateTo(e.target);
+    return routeTo(e.target);
   });
 });
 
@@ -51,11 +51,23 @@ favicons.forEach(function (favicon) {
 
 window.addEventListener('popstate', function () {
   var hash = location.hash.replace('#', '');
-  if (hash) navigateTo(document.querySelector('[data-navigator=' + hash + ']'));else navigateTo(navigators[0]);
+  if (hash) routeTo(document.querySelector('[data-navigator=' + hash + ']'));else routeTo(navigators[0]);
 });
+
+var positionSocialIcons = function positionSocialIcons() {
+  var bodyHeight = document.body.clientHeight;
+  var elemsHeight = document.querySelector('header').clientHeight + document.querySelector('main').clientHeight;
+  var availHeight = bodyHeight - elemsHeight;
+  var social = document.querySelector('aside');
+
+  if (bodyHeight > elemsHeight) social.style.setProperty('margin-top', availHeight - 70 + 'px');
+};
 
 document.querySelector('header > a').addEventListener('click', function () {
   return navigators[0].click();
 });
+
 document.addEventListener('DOMContentLoaded', restoreTab);
+document.addEventListener('DOMContentLoaded', positionSocialIcons);
+window.addEventListener('resize', positionSocialIcons);
 //# sourceMappingURL=script.js.map
