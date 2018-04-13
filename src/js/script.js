@@ -27,6 +27,7 @@ const routeTo = (target,
     if (activeLink) activeLink.classList.remove('active')
     target.classList.add('active')
   }
+  positionSocialIcons()
 }
 
 const pages = ['home', 'about', 'contact']

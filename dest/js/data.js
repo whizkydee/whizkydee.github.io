@@ -10,7 +10,7 @@ var data = {
     name: 'about'
   },
   contact: {
-    content: '\n    <h1>contact</h1>\n    <form action="https://formspree.io/mrolaolu@gmail.com"\n      method="POST">\n      <input type="hidden" name="_subject" value="Message from olaolu.me!">\n      <input type="text" name="name" placeholder="Your Name" required minlength="3">\n      <input type="email" name="_replyto" placeholder="Email Address" required minlength="5">\n      <textarea placeholder="Your Message" name="message" rows="7" required minlength="30"></textarea>\n      <input type="submit" value="shoot!" id="submit">\n      <span>or <a href="https://github.com/whizkydee/ama" target="_blank" rel="noopener">Ask me anything</a> instead.</span>\n    </form>\n    ',
+    content: '\n    <h1>contact</h1>\n    <form action="https://formspree.io/mrolaolu@gmail.com"\n      method="POST">\n      <input type="hidden" name="_subject" value="Message from olaolu.me!">\n      <input type="text" name="name" placeholder="Your Name" required minlength="3">\n      <input type="email" name="_replyto" placeholder="Email Address" required minlength="5">\n      <textarea placeholder="Your Message" name="message" rows="7" required minlength="30"></textarea>\n      <input type="submit" value="shoot!" id="submit">\n      <span>or <a href="https://github.com/whizkydee/ama" target="_blank" rel="noopener">ask me anything</a> instead.</span>\n    </form>\n    ',
     name: 'contact'
   }
 };

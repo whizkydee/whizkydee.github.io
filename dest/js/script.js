@@ -27,6 +27,7 @@ var routeTo = function routeTo(target) {
     if (activeLink) activeLink.classList.remove('active');
     target.classList.add('active');
   }
+  positionSocialIcons();
 };
 
 var pages = ['home', 'about', 'contact'];

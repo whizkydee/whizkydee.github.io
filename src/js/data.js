@@ -28,7 +28,7 @@ const data = {
       <input type="email" name="_replyto" placeholder="Email Address" required minlength="5">
       <textarea placeholder="Your Message" name="message" rows="7" required minlength="30"></textarea>
       <input type="submit" value="shoot!" id="submit">
-      <span>or <a href="https://github.com/whizkydee/ama" target="_blank" rel="noopener">Ask me anything</a> instead.</span>
+      <span>or <a href="https://github.com/whizkydee/ama" target="_blank" rel="noopener">ask me anything</a> instead.</span>
     </form>
     `,
     name: 'contact'
