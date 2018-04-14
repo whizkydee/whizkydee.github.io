@@ -62,7 +62,7 @@ const positionSocialIcons = () => {
   let social = document.querySelector('aside')
 
   if (bodyHeight > elemsHeight)
-    social.style.setProperty('margin-top', `${availHeight - 75}px`)
+    social.style.setProperty('margin-top', `${availHeight - 100}px`)
 }
 
 document.querySelector('header > a')
