@@ -1,10 +1,10 @@
 'use strict';
 
-var navigators = [].slice.call(document.querySelectorAll('[data-navigator]'));
-var aboutLink = navigators[1];
-var hash = window.location.hash.replace('#', '');
-var pageContent = document.querySelector('main');
-var body = document.body;
+var navigators = [].slice.call(document.querySelectorAll('[data-navigator]')),
+    aboutLink = navigators[1],
+    hash = window.location.hash.replace('#', ''),
+    main = document.querySelector('main'),
+    body = document.body;
 
 var routeTo = function routeTo(target) {
   var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : target.getAttribute('data-navigator');
@@ -17,9 +17,9 @@ var routeTo = function routeTo(target) {
   body.style.setProperty('background-color', 'var(--' + tabTitle + '-bg)');
 
   body.className = body.className !== currentTab.name ? currentTab.name : body.className;
-  pageContent.className = pageContent.className !== currentTab.name ? currentTab.name : pageContent.className;
+  main.className = main.className !== currentTab.name ? currentTab.name : main.className;
 
-  pageContent.innerHTML = pageContent.innerHTML !== currentTab.content ? currentTab.content : pageContent.innerHTML;
+  main.innerHTML = main.innerHTML !== currentTab.content ? currentTab.content : main.innerHTML;
   document.querySelector('meta[name="theme-color"]').setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--' + tabTitle + '-bg'));
 
   if (!target.classList.contains('active')) {
@@ -50,7 +50,7 @@ favicons.forEach(function (favicon) {
   return favicon.href = /Android/i.test(navigator.userAgent) ? 'images/favicon-white.png' : favicon.href;
 });
 
-window.addEventListener('popstate', function () {
+window.addEventListener('hashchange', function () {
   var hash = location.hash.replace('#', '');
   if (hash) routeTo(document.querySelector('[data-navigator=' + hash + ']'));else routeTo(navigators[0]);
 });

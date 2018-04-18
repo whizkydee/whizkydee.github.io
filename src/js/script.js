@@ -1,24 +1,19 @@
-const navigators = [].slice.call(document.querySelectorAll('[data-navigator]'))
-const aboutLink = navigators[1]
-const hash = window.location.hash.replace('#', '')
-const pageContent = document.querySelector('main')
-const body = document.body
-
 const routeTo = (target,
   title = target.getAttribute('data-navigator')) => {
+
   let tabTitle = title
+  , body = document.body
   , currentTab = data[tabTitle]
+  , main = document.querySelector('main')
 
   document.documentElement.style.setProperty('background-color', `var(--${tabTitle}-border)`)
   document.title = `${title.charAt(0).toUpperCase() + title.slice(1)} · Olaolu Olawuyi`
   body.style.setProperty('background-color', `var(--${tabTitle}-bg)`)
 
-  body.className = (body.className !== currentTab.name) ? currentTab.name : body.className
-  pageContent.className = (pageContent.className !== currentTab.name)
-    ? currentTab.name : pageContent.className
+  body.className = body.className !== currentTab.name ? currentTab.name : body.className
+  main.className = main.className !== currentTab.name ? currentTab.name : main.className
 
-  pageContent.innerHTML = pageContent.innerHTML !== currentTab.content
-    ? currentTab.content : pageContent.innerHTML
+  main.innerHTML = main.innerHTML !== currentTab.content ? currentTab.content : main.innerHTML
   document.querySelector('meta[name="theme-color"]').setAttribute('content',
     getComputedStyle(document.documentElement).getPropertyValue(`--${tabTitle}-bg`))
 
@@ -30,7 +25,10 @@ const routeTo = (target,
   positionSocialIcons()
 }
 
-const pages = ['home', 'about', 'contact']
+const navigators = [].slice.call(document.querySelectorAll('[data-navigator]'))
+const hash = window.location.hash.replace('#', '')
+, pages = ['home', 'about', 'contact']
+, aboutLink = navigators[1]
 
 if (!pages.includes(hash) || !hash) navigators[0].className = 'active'
 navigators.forEach(link =>
@@ -48,7 +46,7 @@ favicons.forEach(favicon =>
   favicon.href = (/Android/i.test(navigator.userAgent)) ? 'images/favicon-white.png' : favicon.href
 )
 
-window.addEventListener('popstate', () => {
+window.addEventListener('hashchange', () => {
   const hash = location.hash.replace('#', '')
   if (hash) routeTo(document.querySelector(`[data-navigator=${hash}]`))
   else routeTo(navigators[0])
@@ -56,10 +54,10 @@ window.addEventListener('popstate', () => {
 
 const positionSocialIcons = () => {
   let bodyHeight = document.body.clientHeight
-  let elemsHeight = document.querySelector('header').clientHeight
+  , elemsHeight = document.querySelector('header').clientHeight
     + document.querySelector('main').clientHeight
-  let availHeight = bodyHeight - elemsHeight
-  let social = document.querySelector('aside')
+  , availHeight = bodyHeight - elemsHeight
+  , social = document.querySelector('aside')
 
   if (bodyHeight > elemsHeight)
     social.style.setProperty('margin-top', `${availHeight - 100}px`)
