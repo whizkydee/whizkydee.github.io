@@ -1,6 +1,4 @@
-const routeTo = (target,
-  title = target.getAttribute('data-navigator')) => {
-
+const routeTo = (target, title = target.getAttribute('data-navigator')) => {
   let tabTitle = title
   , body = document.body
   , currentTab = data[tabTitle]

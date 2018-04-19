@@ -1,16 +1,12 @@
 'use strict';
 
-var navigators = [].slice.call(document.querySelectorAll('[data-navigator]')),
-    aboutLink = navigators[1],
-    hash = window.location.hash.replace('#', ''),
-    main = document.querySelector('main'),
-    body = document.body;
-
 var routeTo = function routeTo(target) {
   var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : target.getAttribute('data-navigator');
 
   var tabTitle = title,
-      currentTab = data[tabTitle];
+      body = document.body,
+      currentTab = data[tabTitle],
+      main = document.querySelector('main');
 
   document.documentElement.style.setProperty('background-color', 'var(--' + tabTitle + '-border)');
   document.title = title.charAt(0).toUpperCase() + title.slice(1) + ' \xB7 Olaolu Olawuyi';
@@ -30,7 +26,10 @@ var routeTo = function routeTo(target) {
   positionSocialIcons();
 };
 
-var pages = ['home', 'about', 'contact'];
+var navigators = [].slice.call(document.querySelectorAll('[data-navigator]'));
+var hash = window.location.hash.replace('#', ''),
+    pages = ['home', 'about', 'contact'],
+    aboutLink = navigators[1];
 
 if (!pages.includes(hash) || !hash) navigators[0].className = 'active';
 navigators.forEach(function (link) {
@@ -56,10 +55,10 @@ window.addEventListener('hashchange', function () {
 });
 
 var positionSocialIcons = function positionSocialIcons() {
-  var bodyHeight = document.body.clientHeight;
-  var elemsHeight = document.querySelector('header').clientHeight + document.querySelector('main').clientHeight;
-  var availHeight = bodyHeight - elemsHeight;
-  var social = document.querySelector('aside');
+  var bodyHeight = document.body.clientHeight,
+      elemsHeight = document.querySelector('header').clientHeight + document.querySelector('main').clientHeight,
+      availHeight = bodyHeight - elemsHeight,
+      social = document.querySelector('aside');
 
   if (bodyHeight > elemsHeight) social.style.setProperty('margin-top', availHeight - 100 + 'px');
 };
