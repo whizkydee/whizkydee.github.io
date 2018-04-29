@@ -65,7 +65,7 @@ var positionSocialIcons = function positionSocialIcons() {
       availHeight = bodyHeight - elemsHeight,
       social = document.querySelector('aside');
 
-  if (bodyHeight > elemsHeight) social.style.setProperty('margin-top', availHeight - 150 + 'px');
+  if (bodyHeight > elemsHeight) social.style.setProperty('margin-top', availHeight - 100 + 'px');
 };
 
 document.querySelector('header > a').addEventListener('click', function () {
