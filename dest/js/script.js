@@ -49,6 +49,25 @@ window.addEventListener('hashchange', function () {
   if (hash) routeTo(document.querySelector('[data-navigator=' + hash + ']'));else routeTo(navigators[0]);
 });
 
+var updateFavicon = function updateFavicon() {
+  var favicons = [].slice.call(document.querySelectorAll('link[rel="icon"]')),
+      chromeOnAndroid = /Chrome/i.test(navigator.userAgent) && /Android/i.test(navigator.userAgent),
+      portrait = screen.orientation.type.includes('portrait');
+
+  favicons.forEach(function (favicon) {
+    return favicon.href = chromeOnAndroid && portrait ? 'images/favicon-white.png' : favicon.href;
+  });
+};
+
+var positionSocialIcons = function positionSocialIcons() {
+  var bodyHeight = document.body.clientHeight,
+      elemsHeight = document.querySelector('header').clientHeight + document.querySelector('main').clientHeight,
+      availHeight = bodyHeight - elemsHeight,
+      social = document.querySelector('aside');
+
+  if (bodyHeight > elemsHeight) social.style.setProperty('margin-top', availHeight - 100 + 'px');
+};
+
 document.querySelector('header > a').addEventListener('click', function () {
   return navigators[0].click();
 });
