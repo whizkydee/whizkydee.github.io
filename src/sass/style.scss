@@ -134,7 +134,7 @@ main {
     font-weight: 900;
     &[href="/#about"]:after {
       content: url(../../images/arrow-right.svg);
-      vertical-align: 1px;
+      vertical-align: 0px;
     }
   }
   h1 {
