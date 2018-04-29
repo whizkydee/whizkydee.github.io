@@ -44,30 +44,23 @@ var restoreTab = function restoreTab() {
   });
 };
 
-var favicons = [].slice.call(document.querySelectorAll('link[rel="icon"]'));
-favicons.forEach(function (favicon) {
-  return favicon.href = /Android/i.test(navigator.userAgent) ? 'images/favicon-white.png' : favicon.href;
-});
-
 window.addEventListener('hashchange', function () {
   var hash = location.hash.replace('#', '');
   if (hash) routeTo(document.querySelector('[data-navigator=' + hash + ']'));else routeTo(navigators[0]);
 });
 
-var positionSocialIcons = function positionSocialIcons() {
-  var bodyHeight = document.body.clientHeight,
-      elemsHeight = document.querySelector('header').clientHeight + document.querySelector('main').clientHeight,
-      availHeight = bodyHeight - elemsHeight,
-      social = document.querySelector('aside');
-
-  if (bodyHeight > elemsHeight) social.style.setProperty('margin-top', availHeight - 100 + 'px');
-};
-
 document.querySelector('header > a').addEventListener('click', function () {
   return navigators[0].click();
 });
 
-document.addEventListener('DOMContentLoaded', restoreTab);
-document.addEventListener('DOMContentLoaded', positionSocialIcons);
-window.addEventListener('resize', positionSocialIcons);
+document.addEventListener('DOMContentLoaded', function () {
+  restoreTab();
+  updateFavicon();
+  positionSocialIcons();
+});
+
+window.addEventListener('resize', function () {
+  updateFavicon();
+  positionSocialIcons();
+});
 //# sourceMappingURL=script.js.map

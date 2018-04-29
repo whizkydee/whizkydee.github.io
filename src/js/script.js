@@ -39,16 +39,22 @@ const restoreTab = () => {
   })
 }
 
-const favicons = [].slice.call(document.querySelectorAll('link[rel="icon"]'))
-favicons.forEach(favicon =>
-  favicon.href = (/Android/i.test(navigator.userAgent)) ? 'images/favicon-white.png' : favicon.href
-)
-
 window.addEventListener('hashchange', () => {
   const hash = location.hash.replace('#', '')
   if (hash) routeTo(document.querySelector(`[data-navigator=${hash}]`))
   else routeTo(navigators[0])
 })
+
+const updateFavicon = () => {
+  const favicons = [].slice.call(document.querySelectorAll('link[rel="icon"]'))
+  , chromeOnAndroid = /Chrome/i.test(navigator.userAgent)
+                      && /Android/i.test(navigator.userAgent)
+  , portrait = screen.orientation.type.includes('portrait')
+
+  favicons.forEach(favicon =>
+    favicon.href = (chromeOnAndroid && portrait) ? 'images/favicon-white.png' : favicon.href
+  )
+}
 
 const positionSocialIcons = () => {
   let bodyHeight = document.body.clientHeight
@@ -64,6 +70,13 @@ const positionSocialIcons = () => {
 document.querySelector('header > a')
   .addEventListener('click', () => navigators[0].click())
 
-document.addEventListener('DOMContentLoaded', restoreTab)
-document.addEventListener('DOMContentLoaded', positionSocialIcons)
-window.addEventListener('resize', positionSocialIcons)
+document.addEventListener('DOMContentLoaded', () => {
+  restoreTab()
+  updateFavicon()
+  positionSocialIcons()
+})
+
+window.addEventListener('resize', () => {
+  updateFavicon()
+  positionSocialIcons()
+})

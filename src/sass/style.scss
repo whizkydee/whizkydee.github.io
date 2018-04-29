@@ -24,6 +24,7 @@
 
 html {
   @include transition(background-color .3s ease);
+  background-color: #6c45b0;
   background-color: var(--home-border);
   height: 100vh;
   @media (orientation: landscape) and
@@ -35,6 +36,7 @@ html {
 body {
   @include transition(background-color 1s ease .1s);
   @include transform(translate(-50%, -50%));
+  background-color: #7e57c2;
   background-color: var(--home-bg);
   position: absolute;
   overflow-y: scroll;
