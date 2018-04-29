@@ -53,6 +53,11 @@ body {
   }
 }
 
+header h3,
+main > h1 {
+  font-weight: 900;
+}
+
 header {
   position: relative;
   padding: 30px 50px;
@@ -93,7 +98,7 @@ nav {
       }
       &.active {
         border-color: var(--active-color);
-        font-weight: bold;
+        font-weight: 900;
       }
     }
   }
@@ -115,7 +120,7 @@ main {
   }
   &:not(.home) {
     a, b {
-      font-weight: 500 !important;
+      font-weight: 600 !important;
     }
   }
   &.about {
@@ -126,9 +131,10 @@ main {
     }
   }
   a {
-    font-weight: bold;
+    font-weight: 900;
     &[href="/#about"]:after {
-      content: " →";
+      content: url(../../images/arrow-right.svg);
+      vertical-align: 1px;
     }
   }
   h1 {

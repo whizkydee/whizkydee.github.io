@@ -1,27 +1,27 @@
 @font-face {
   font-family: 'Fira Sans';
-  src: url('../../fonts/FiraSans-Regular.ttf') format('truetype');
+  src: url('../../fonts/FiraSans-Regular.woff2') format('woff2');
   font-style: normal;
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Fira Sans';
-  src: url('../../fonts/FiraSans-SemiBold.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: 'Fira Sans';
-  src: url('../../fonts/FiraSans-Bold.ttf') format('truetype');
+  src: url('../../fonts/FiraSans-SemiBold.woff2') format('woff2');
   font-style: normal;
   font-weight: 600;
 }
 
 @font-face {
   font-family: 'Fira Sans';
-  src: url('../../fonts/FiraSans-Black.ttf') format('truetype');
+  src: url('../../fonts/FiraSans-Bold.woff2') format('woff2');
   font-style: normal;
   font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('../../fonts/FiraSans-Black.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 900;
 }
