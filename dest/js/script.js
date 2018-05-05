@@ -73,7 +73,6 @@ document.querySelector('header > a').addEventListener('click', function () {
   return navigators[0].click();
 });
 
-document.querySelector('[type=""]');
 document.addEventListener('DOMContentLoaded', function () {
   restoreTab();
   updateFavicon();
