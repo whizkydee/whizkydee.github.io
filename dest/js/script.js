@@ -12,8 +12,8 @@ var routeTo = function routeTo(target) {
   document.title = title.charAt(0).toUpperCase() + title.slice(1) + ' \xB7 Olaolu Olawuyi';
   body.style.setProperty('background-color', 'var(--' + tabTitle + '-bg)');
 
-  body.className = body.className !== currentTab.name ? currentTab.name : body.className;
-  main.className = main.className !== currentTab.name ? currentTab.name : main.className;
+  body.className = body.className !== currentTab['tabId'] ? currentTab['tabId'] : body.className;
+  main.className = main.className !== currentTab['tabId'] ? currentTab['tabId'] : main.className;
 
   main.innerHTML = main.innerHTML !== currentTab.content ? currentTab.content : main.innerHTML;
   document.querySelector('meta[name="theme-color"]').setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--' + tabTitle + '-bg'));
@@ -32,6 +32,7 @@ var hash = window.location.hash.replace('#', ''),
     aboutLink = navigators[1];
 
 if (!pages.includes(hash) || !hash) navigators[0].className = 'active';
+
 navigators.forEach(function (link) {
   return link.addEventListener('click', function (e) {
     return routeTo(e.target);
@@ -60,8 +61,8 @@ var updateFavicon = function updateFavicon() {
 };
 
 var positionSocialIcons = function positionSocialIcons() {
-  var bodyHeight = document.body.clientHeight,
-      elemsHeight = document.querySelector('header').clientHeight + document.querySelector('main').clientHeight,
+  var elemsHeight = document.querySelector('header').clientHeight + document.querySelector('main').clientHeight,
+      bodyHeight = document.body.clientHeight,
       availHeight = bodyHeight - elemsHeight,
       social = document.querySelector('aside');
 
@@ -72,10 +73,13 @@ document.querySelector('header > a').addEventListener('click', function () {
   return navigators[0].click();
 });
 
+document.querySelector('[type=""]');
 document.addEventListener('DOMContentLoaded', function () {
   restoreTab();
   updateFavicon();
   positionSocialIcons();
+  document.body.style.setProperty('transition', 'background-color 1s ease .1s');
+  document.documentElement.style.setProperty('transition', 'background-color .3s ease');
 });
 
 window.addEventListener('resize', function () {

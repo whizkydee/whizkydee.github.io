@@ -1,3 +1,4 @@
+'use strict'
 const routeTo = (target, title = target.getAttribute('data-navigator')) => {
   let tabTitle = title
   , body = document.body
@@ -8,10 +9,10 @@ const routeTo = (target, title = target.getAttribute('data-navigator')) => {
   document.title = `${title.charAt(0).toUpperCase() + title.slice(1)} · Olaolu Olawuyi`
   body.style.setProperty('background-color', `var(--${tabTitle}-bg)`)
 
-  body.className = body.className !== currentTab.name ? currentTab.name : body.className
-  main.className = main.className !== currentTab.name ? currentTab.name : main.className
+  body.className = body.className !== currentTab['tabId']? currentTab['tabId']: body.className
+  main.className = main.className !== currentTab['tabId']? currentTab['tabId']: main.className
 
-  main.innerHTML = main.innerHTML !== currentTab.content ? currentTab.content : main.innerHTML
+  main.innerHTML = main.innerHTML !== currentTab.content? currentTab.content: main.innerHTML
   document.querySelector('meta[name="theme-color"]').setAttribute('content',
     getComputedStyle(document.documentElement).getPropertyValue(`--${tabTitle}-bg`))
 
@@ -29,6 +30,7 @@ const hash = window.location.hash.replace('#', '')
 , aboutLink = navigators[1]
 
 if (!pages.includes(hash) || !hash) navigators[0].className = 'active'
+
 navigators.forEach(link =>
   link.addEventListener('click', e => routeTo(e.target))
 )
@@ -52,14 +54,14 @@ const updateFavicon = () => {
   , portrait = screen.orientation.type.includes('portrait')
 
   favicons.forEach(favicon =>
-    favicon.href = (chromeOnAndroid && portrait) ? 'images/favicon-white.png' : favicon.href
+    favicon.href = (chromeOnAndroid && portrait)? 'images/favicon-white.png': favicon.href
   )
 }
 
 const positionSocialIcons = () => {
-  let bodyHeight = document.body.clientHeight
-  , elemsHeight = document.querySelector('header').clientHeight
-    + document.querySelector('main').clientHeight
+  let elemsHeight = document.querySelector('header').clientHeight
+                  + document.querySelector('main').clientHeight
+  , bodyHeight = document.body.clientHeight
   , availHeight = bodyHeight - elemsHeight
   , social = document.querySelector('aside')
 
@@ -70,10 +72,13 @@ const positionSocialIcons = () => {
 document.querySelector('header > a')
   .addEventListener('click', () => navigators[0].click())
 
-document.addEventListener('DOMContentLoaded', () => {
-  restoreTab()
-  updateFavicon()
-  positionSocialIcons()
+document.addEventListener(
+  'DOMContentLoaded', () => {
+    restoreTab()
+    updateFavicon()
+    positionSocialIcons()
+    document.body.style.setProperty('transition', 'background-color 1s ease .1s')
+    document.documentElement.style.setProperty('transition', 'background-color .3s ease')
 })
 
 window.addEventListener('resize', () => {

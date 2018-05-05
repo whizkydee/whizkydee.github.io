@@ -5,7 +5,7 @@ const data = {
     <p>A 17 year old creative front end developer and designer in <a href="https://www.google.com/maps/place/Lagos/@6.5483768,3.1438711,11z/data=!3m1!4b1!4m5!3m4!1s0x103b8b2ae68280c1:0xdc9e87a367c3d9cb!8m2!3d6.5243793!4d3.3792057" target="_blank">Lagos, Nigeria</a>. I'm interested in the web, open source, artificial intelligence, tech, design and music. You can check out my work on <a href="https://github.com/whizkydee" target="_blank" rel="noopener">GitHub</a>.</p>
     <a href="/#about" onclick="aboutLink.click()">about</a>
     `,
-    name: 'home'
+    tabId: 'home'
   },
   about: {
     content: `
@@ -16,7 +16,7 @@ const data = {
     <p>I love to build applications in core <b>JavaScript</b>. I use frameworks like React, Vue, Node.js and a bunch. I'm currently open to ideas and very flexible remote or contract work.</p>
     <p>Love my work? A box of unicorn donuts would be nice 😊. Please <a href="https://bit.ly/payOlaolu" target="_blank" rel="noopener">donate</a>.</p>
     `,
-    name: 'about'
+    tabId: 'about'
   },
   contact: {
     content: `
@@ -24,13 +24,14 @@ const data = {
     <form action="https://formspree.io/mrolaolu@gmail.com"
       method="POST">
       <input type="hidden" name="_subject" value="Message from olaolu.me!">
-      <input type="text" name="name" placeholder="Your Name" required minlength="3">
+      <input title="Name should be at least three characters long and contain only letters."
+        type="text" name="name" placeholder="Your Name" required pattern="[A-Za-z]{3,70}">
       <input type="email" name="_replyto" placeholder="Email Address" required minlength="5">
       <textarea placeholder="Your Message" name="message" rows="7" required minlength="30"></textarea>
       <input type="submit" value="shoot!" id="submit">
       <span>or <a href="https://github.com/whizkydee/ama" target="_blank" rel="noopener">ask me anything</a> instead.</span>
     </form>
     `,
-    name: 'contact'
+    tabId: 'contact'
   }
 }
