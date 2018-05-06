@@ -26,7 +26,7 @@ var routeTo = function routeTo(target) {
   positionSocialIcons();
 };
 
-var navigators = [].slice.call(document.querySelectorAll('[data-navigator]'));
+var navigators = document.querySelectorAll('[data-navigator]');
 var hash = window.location.hash.replace('#', ''),
     pages = ['home', 'about', 'contact'],
     aboutLink = navigators[1];
@@ -51,7 +51,7 @@ window.addEventListener('hashchange', function () {
 });
 
 var updateFavicon = function updateFavicon() {
-  var favicons = [].slice.call(document.querySelectorAll('link[rel="icon"]')),
+  var favicons = document.querySelectorAll('link[rel="icon"]'),
       chromeOnAndroid = /Chrome/i.test(navigator.userAgent) && /Android/i.test(navigator.userAgent),
       portrait = screen.orientation.type.includes('portrait');
 

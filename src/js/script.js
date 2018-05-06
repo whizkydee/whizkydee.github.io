@@ -24,7 +24,7 @@ const routeTo = (target, title = target.getAttribute('data-navigator')) => {
   positionSocialIcons()
 }
 
-const navigators = [].slice.call(document.querySelectorAll('[data-navigator]'))
+const navigators = document.querySelectorAll('[data-navigator]')
 const hash = window.location.hash.replace('#', '')
 , pages = ['home', 'about', 'contact']
 , aboutLink = navigators[1]
@@ -48,9 +48,9 @@ window.addEventListener('hashchange', () => {
 })
 
 const updateFavicon = () => {
-  const favicons = [].slice.call(document.querySelectorAll('link[rel="icon"]'))
+  const favicons = document.querySelectorAll('link[rel="icon"]')
   , chromeOnAndroid = /Chrome/i.test(navigator.userAgent)
-                      && /Android/i.test(navigator.userAgent)
+                    && /Android/i.test(navigator.userAgent)
   , portrait = screen.orientation.type.includes('portrait')
 
   favicons.forEach(favicon =>
