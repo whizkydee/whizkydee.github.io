@@ -23,9 +23,10 @@
 }
 
 html {
+  display: flex;
+  height: 100vh;
   background-color: $color_dark;
   background-color: var(--home-border);
-  height: 100vh;
   @media (orientation: landscape) and
   (min-height: 700px), (max-height: 635px) {
     overflow: hidden;
@@ -33,16 +34,14 @@ html {
 }
 
 body {
-  @include transform(translate(-50%, -50%));
+  align-self: center;
+  justify-content: center;
   background-color: #7e57c2;
   background-color: var(--home-bg);
-  position: absolute;
   overflow-y: scroll;
   color: $off_white;
   height: 95vh;
   width: 97vw;
-  left: 50%;
-  top: 50%;
   @media (min-width: 1024px)
   and (min-height: 600px) {
     overflow-y: hidden;
