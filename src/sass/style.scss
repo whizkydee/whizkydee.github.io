@@ -60,6 +60,8 @@ main > h1 {
 header {
   position: relative;
   padding: 30px 50px;
+  display: flex;
+  justify-content: space-between;
   @media (max-width: 840px) {
     padding: 30px;
   }
@@ -68,7 +70,6 @@ header {
     padding-left: 20px;
   }
   h3 {
-    display: inline-block;
     padding: 0;
     margin: 0;
     &:after {
@@ -81,10 +82,12 @@ header {
 nav {
   --active-color: rgba(238, 255, 255, .2);
   position: relative;
-  margin-top: -15px;
-  float: right;
+  ul {
+    padding: 0;
+    margin: 0;
+  }
   li {
-    display: inline-block;
+    display: inline-flex;
     position: relative;
     margin-right: 10px;
     &:last-of-type { margin-right: 0; }
@@ -164,7 +167,8 @@ aside {
 }
 
 .home aside {
-  display: block;
+  display: flex;
+  justify-content: center;
   a {
     @include transition(none);
     text-transform: uppercase;
