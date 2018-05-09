@@ -59,7 +59,7 @@
 
   <main class="home">
     <h1>Hi. I'm Olaolu,</h1>
-    <p>A 17 year old creative front end developer and designer in <a href="https://www.google.com/maps/place/Lagos/@6.5483768,3.1438711,11z/data=!3m1!4b1!4m5!3m4!1s0x103b8b2ae68280c1:0xdc9e87a367c3d9cb!8m2!3d6.5243793!4d3.3792057" target="_blank">Lagos, Nigeria</a>. I'm interested in the web, open source, artificial intelligence, tech, design and music. You can check out my work on <a href="https://github.com/whizkydee" target="_blank" rel="noopener">GitHub</a>.</p>
+    <p>A 17 year old creative front end developer and designer in <a href="https://www.google.com/maps/place/Lagos/@6.5483768,3.1438711,11z/data=!3m1!4b1!4m5!3m4!1s0x103b8b2ae68280c1:0xdc9e87a367c3d9cb!8m2!3d6.5243793!4d3.3792057" target="_blank" rel="noopener">Lagos, Nigeria</a>. I'm interested in the web, open source, artificial intelligence, tech, design and music. You can check out my work on <a href="https://github.com/whizkydee" target="_blank" rel="noopener">GitHub</a>.</p>
     <a href="/#about" onclick="aboutLink.click()">about</a>
   </main>
 
@@ -80,6 +80,8 @@
   <script src="src/js/data.js"></script>
   <script src="src/js/script.js"></script>
   <script>
+    // Force SSL on non-secure requests to olaolu.me.
+    if (location.port != '8080' && location.protocol != 'https:') location.protocol = 'https';
     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
     ga('create', 'UA-117246192-1', 'auto');
     ga('require', 'linkid');

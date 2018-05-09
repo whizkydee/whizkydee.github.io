@@ -27,7 +27,7 @@ var routeTo = function routeTo(target) {
 };
 
 var navigators = document.querySelectorAll('[data-navigator]');
-var hash = window.location.hash.replace('#', ''),
+var hash = location.hash.replace('#', ''),
     pages = ['home', 'about', 'contact'],
     aboutLink = navigators[1];
 
@@ -52,7 +52,7 @@ window.addEventListener('hashchange', function () {
 
 var updateFavicon = function updateFavicon() {
   var favicons = document.querySelectorAll('link[rel="icon"]'),
-      chromeOnAndroid = /Chrome/i.test(navigator.userAgent) && /Android/i.test(navigator.userAgent),
+      chromeOnAndroid = /Android/i.test(navigator.userAgent) && /Chrome/i.test(navigator.userAgent),
       portrait = screen.orientation.type.includes('portrait');
 
   favicons.forEach(function (favicon) {

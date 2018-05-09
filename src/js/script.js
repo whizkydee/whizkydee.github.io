@@ -1,4 +1,3 @@
-'use strict'
 const routeTo = (target, title = target.getAttribute('data-navigator')) => {
   let tabTitle = title
   , body = document.body
@@ -25,7 +24,7 @@ const routeTo = (target, title = target.getAttribute('data-navigator')) => {
 }
 
 const navigators = document.querySelectorAll('[data-navigator]')
-const hash = window.location.hash.replace('#', '')
+const hash = location.hash.replace('#', '')
 , pages = ['home', 'about', 'contact']
 , aboutLink = navigators[1]
 
@@ -49,8 +48,8 @@ window.addEventListener('hashchange', () => {
 
 const updateFavicon = () => {
   const favicons = document.querySelectorAll('link[rel="icon"]')
-  , chromeOnAndroid = /Chrome/i.test(navigator.userAgent)
-                    && /Android/i.test(navigator.userAgent)
+  , chromeOnAndroid = /Android/i.test(navigator.userAgent)
+                    && /Chrome/i.test(navigator.userAgent)
   , portrait = screen.orientation.type.includes('portrait')
 
   favicons.forEach(favicon =>
