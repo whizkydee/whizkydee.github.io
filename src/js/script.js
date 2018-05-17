@@ -1,8 +1,8 @@
 const routeTo = (target, title = target.getAttribute('data-navigator')) => {
   let tabTitle = title
-  , body = document.body
   , currentTab = data[tabTitle]
   , main = document.querySelector('main')
+  , body = document.body
 
   document.documentElement.style.setProperty('background-color', `var(--${tabTitle}-border)`)
   document.title = `${title.charAt(0).toUpperCase() + title.slice(1)} · Olaolu Olawuyi`
@@ -78,7 +78,7 @@ document.addEventListener(
     positionSocialIcons()
     document.body.style.setProperty('transition', 'background-color 1s ease .1s')
     document.documentElement.style.setProperty('transition', 'background-color .3s ease')
-})
+  })
 
 window.addEventListener('resize', () => {
   updateFavicon()

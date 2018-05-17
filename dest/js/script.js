@@ -4,9 +4,9 @@ var routeTo = function routeTo(target) {
   var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : target.getAttribute('data-navigator');
 
   var tabTitle = title,
-      body = document.body,
       currentTab = data[tabTitle],
-      main = document.querySelector('main');
+      main = document.querySelector('main'),
+      body = document.body;
 
   document.documentElement.style.setProperty('background-color', 'var(--' + tabTitle + '-border)');
   document.title = title.charAt(0).toUpperCase() + title.slice(1) + ' \xB7 Olaolu Olawuyi';
