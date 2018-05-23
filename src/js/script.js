@@ -1,3 +1,4 @@
+// IMPORTANT: see https://olaolu.me/src/js/script.js for the real sauce.
 const routeTo = (target, title = target.getAttribute('data-navigator')) => {
   let tabTitle = title
   , currentTab = data[tabTitle]
@@ -23,7 +24,7 @@ const routeTo = (target, title = target.getAttribute('data-navigator')) => {
   positionSocialIcons()
 }
 
-const navigators = document.querySelectorAll('[data-navigator]')
+const navigators = [].slice.call(document.querySelectorAll('[data-navigator]'))
 const hash = location.hash.replace('#', '')
 , pages = ['home', 'about', 'contact']
 , aboutLink = navigators[1]
@@ -47,7 +48,7 @@ window.addEventListener('hashchange', () => {
 })
 
 const updateFavicon = () => {
-  const favicons = document.querySelectorAll('link[rel="icon"]')
+  const favicons = [].slice.call(document.querySelectorAll('link[rel="icon"]'))
   , chromeOnAndroid = /Android/i.test(navigator.userAgent)
                     && /Chrome/i.test(navigator.userAgent)
   , portrait = screen.orientation.type.includes('portrait')

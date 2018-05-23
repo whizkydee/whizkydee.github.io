@@ -1,5 +1,6 @@
 'use strict';
 
+// IMPORTANT: see https://olaolu.me/src/js/script.js for the real sauce.
 var routeTo = function routeTo(target) {
   var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : target.getAttribute('data-navigator');
 
@@ -26,7 +27,7 @@ var routeTo = function routeTo(target) {
   positionSocialIcons();
 };
 
-var navigators = document.querySelectorAll('[data-navigator]');
+var navigators = [].slice.call(document.querySelectorAll('[data-navigator]'));
 var hash = location.hash.replace('#', ''),
     pages = ['home', 'about', 'contact'],
     aboutLink = navigators[1];
@@ -51,7 +52,7 @@ window.addEventListener('hashchange', function () {
 });
 
 var updateFavicon = function updateFavicon() {
-  var favicons = document.querySelectorAll('link[rel="icon"]'),
+  var favicons = [].slice.call(document.querySelectorAll('link[rel="icon"]')),
       chromeOnAndroid = /Android/i.test(navigator.userAgent) && /Chrome/i.test(navigator.userAgent),
       portrait = screen.orientation.type.includes('portrait');
 
