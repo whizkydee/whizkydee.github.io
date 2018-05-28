@@ -27,6 +27,9 @@ html {
   height: 100vh;
   background-color: $color_dark;
   background-color: var(--home-border);
+  @media (max-width: 700px) {
+    font-size: 14px;
+  }
   @media (orientation: landscape) and
   (min-height: 700px), (max-height: 635px) {
     overflow: hidden;
@@ -38,16 +41,18 @@ body {
   justify-content: center;
   background-color: #7e57c2;
   background-color: var(--home-bg);
+  @include border-radius(3px);
   overflow-y: scroll;
   color: $off_white;
   height: 95vh;
-  width: 97vw;
+  width: 98vw;
   @media (min-width: 1024px)
   and (min-height: 600px) {
     overflow-y: hidden;
   }
   @media (max-width: 700px) {
     height: 97vh;
+    width: 96vw;
   }
 }
 
@@ -121,7 +126,7 @@ main {
   }
   &:not(.home) {
     a, b {
-      font-weight: 600 !important;
+      font-weight: 600;
     }
   }
   &.about {
