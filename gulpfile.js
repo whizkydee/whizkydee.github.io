@@ -16,7 +16,7 @@ const paths = {
   script: 'src/js/**/*.js'
 }
 
-const allTasks = ['server', 'watch', 'transpile', 'sass']
+const allTasks = ['server', 'watch', 'transpile', 'sass', 'reload']
 
 gulp.task('sass', () => {
   return gulp.src(paths.sass)

@@ -65,8 +65,10 @@ const positionSocialIcons = () => {
   , availHeight = bodyHeight - elemsHeight
   , social = document.querySelector('aside')
 
-  if (bodyHeight > elemsHeight)
-    social.style.setProperty('margin-top', `${availHeight - 100}px`)
+  if (bodyHeight > elemsHeight) {
+    social.style.marginTop = window.matchMedia('(orientation: portrait)')
+      .matches ? `${availHeight - 130}px` : `${availHeight - 70}px`
+  }
 }
 
 document.querySelector('header > a')

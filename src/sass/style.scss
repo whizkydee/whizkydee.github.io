@@ -28,7 +28,7 @@ html {
   background-color: $color_dark;
   background-color: var(--home-border);
   @media (max-width: 700px) {
-    font-size: 14px;
+    font-size: 14.5px;
   }
   @media (orientation: landscape) and
   (min-height: 700px), (max-height: 635px) {
@@ -84,6 +84,10 @@ header {
 }
 
 nav {
+  @media (max-width: 700px) {
+    align-self: center;
+    font-size: .9em;
+  }
   --active-color: rgba(238, 255, 255, .2);
   position: relative;
   ul {
@@ -94,6 +98,7 @@ nav {
     display: inline-flex;
     position: relative;
     margin-right: 10px;
+    @media (max-width: 700px) { margin-right: 5px; }
     &:last-of-type { margin-right: 0; }
     a {
       @include transition(border-color .3s linear);
@@ -152,6 +157,9 @@ main {
     text-transform: capitalize;
     position: relative;
     line-height: 1.5;
+    span {
+      color: var(--color-fade);
+    }
   }
   p {
     position: relative;
