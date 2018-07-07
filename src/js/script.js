@@ -1,4 +1,4 @@
-// IMPORTANT: see https://olaolu.me/src/js/script.js for the real sauce.
+// INFO: see https://olaolu.me/src/js/script.js for the real sauce.
 const routeTo = (target, title = target.getAttribute('data-navigator')) => {
   let tabTitle = title
   , currentTab = data[tabTitle]
@@ -47,17 +47,6 @@ window.addEventListener('hashchange', () => {
   else routeTo(navigators[0])
 })
 
-const updateFavicon = () => {
-  const favicons = [].slice.call(document.querySelectorAll('link[rel="icon"]'))
-  , chromeOnAndroid = /Android/i.test(navigator.userAgent)
-                    && /Chrome/i.test(navigator.userAgent)
-  , portrait = screen.orientation.type.includes('portrait')
-
-  favicons.forEach(favicon =>
-    favicon.href = (chromeOnAndroid && portrait)? 'images/favicon-white.png': favicon.href
-  )
-}
-
 const positionSocialIcons = () => {
   let elemsHeight = document.querySelector('header').clientHeight
                   + document.querySelector('main').clientHeight
@@ -77,13 +66,9 @@ document.querySelector('header > a')
 document.addEventListener(
   'DOMContentLoaded', () => {
     restoreTab()
-    updateFavicon()
     positionSocialIcons()
     document.body.style.setProperty('transition', 'background-color 1s ease .1s')
     document.documentElement.style.setProperty('transition', 'background-color .3s ease')
   })
 
-window.addEventListener('resize', () => {
-  updateFavicon()
-  positionSocialIcons()
-})
+window.addEventListener('resize', positionSocialIcons)

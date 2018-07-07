@@ -1,6 +1,6 @@
 'use strict';
 
-// IMPORTANT: see https://olaolu.me/src/js/script.js for the real sauce.
+// INFO: see https://olaolu.me/src/js/script.js for the real sauce.
 var routeTo = function routeTo(target) {
   var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : target.getAttribute('data-navigator');
 
@@ -51,16 +51,6 @@ window.addEventListener('hashchange', function () {
   if (hash) routeTo(document.querySelector('[data-navigator=' + hash + ']'));else routeTo(navigators[0]);
 });
 
-var updateFavicon = function updateFavicon() {
-  var favicons = [].slice.call(document.querySelectorAll('link[rel="icon"]')),
-      chromeOnAndroid = /Android/i.test(navigator.userAgent) && /Chrome/i.test(navigator.userAgent),
-      portrait = screen.orientation.type.includes('portrait');
-
-  favicons.forEach(function (favicon) {
-    return favicon.href = chromeOnAndroid && portrait ? 'images/favicon-white.png' : favicon.href;
-  });
-};
-
 var positionSocialIcons = function positionSocialIcons() {
   var elemsHeight = document.querySelector('header').clientHeight + document.querySelector('main').clientHeight,
       bodyHeight = document.body.clientHeight,
@@ -78,14 +68,10 @@ document.querySelector('header > a').addEventListener('click', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
   restoreTab();
-  updateFavicon();
   positionSocialIcons();
   document.body.style.setProperty('transition', 'background-color 1s ease .1s');
   document.documentElement.style.setProperty('transition', 'background-color .3s ease');
 });
 
-window.addEventListener('resize', function () {
-  updateFavicon();
-  positionSocialIcons();
-});
+window.addEventListener('resize', positionSocialIcons);
 //# sourceMappingURL=script.js.map
