@@ -1,15 +1,16 @@
 'use strict';
 
 // INFO: see https://olaolu.me/src/js/script.js for the real sauce.
+var body = document.body,
+    docElem = document.documentElement;
 var routeTo = function routeTo(target) {
   var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : target.getAttribute('data-navigator');
 
   var tabTitle = title,
       currentTab = data[tabTitle],
-      main = document.querySelector('main'),
-      body = document.body;
+      main = document.querySelector('main');
 
-  document.documentElement.style.setProperty('background-color', 'var(--' + tabTitle + '-border)');
+  docElem.style.setProperty('background-color', 'var(--' + tabTitle + '-border)');
   document.title = title.charAt(0).toUpperCase() + title.slice(1) + ' \xB7 Olaolu Olawuyi';
   body.style.setProperty('background-color', 'var(--' + tabTitle + '-bg)');
 
@@ -17,7 +18,7 @@ var routeTo = function routeTo(target) {
   main.className = main.className !== currentTab['tabId'] ? currentTab['tabId'] : main.className;
 
   main.innerHTML = main.innerHTML !== currentTab.content ? currentTab.content : main.innerHTML;
-  document.querySelector('meta[name="theme-color"]').setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--' + tabTitle + '-bg'));
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', getComputedStyle(docElem).getPropertyValue('--' + tabTitle + '-bg'));
 
   if (!target.classList.contains('active')) {
     var activeLink = document.querySelector('.active');
@@ -70,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
   restoreTab();
   positionSocialIcons();
   document.body.style.setProperty('transition', 'background-color 1s ease .1s');
-  document.documentElement.style.setProperty('transition', 'background-color .3s ease');
+  docElem.style.setProperty('transition', 'background-color .3s ease');
 });
 
 window.addEventListener('resize', positionSocialIcons);

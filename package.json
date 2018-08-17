@@ -5,6 +5,9 @@
   "description": "Olaolu's personal website.",
   "main": "src/script.js",
   "license": "MIT",
+  "scripts": {
+    "start": "gulp"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",

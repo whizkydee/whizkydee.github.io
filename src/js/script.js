@@ -1,11 +1,12 @@
 // INFO: see https://olaolu.me/src/js/script.js for the real sauce.
+const body = document.body,
+  docElem = document.documentElement
 const routeTo = (target, title = target.getAttribute('data-navigator')) => {
   let tabTitle = title
   , currentTab = data[tabTitle]
   , main = document.querySelector('main')
-  , body = document.body
 
-  document.documentElement.style.setProperty('background-color', `var(--${tabTitle}-border)`)
+  docElem.style.setProperty('background-color', `var(--${tabTitle}-border)`)
   document.title = `${title.charAt(0).toUpperCase() + title.slice(1)} · Olaolu Olawuyi`
   body.style.setProperty('background-color', `var(--${tabTitle}-bg)`)
 
@@ -14,7 +15,7 @@ const routeTo = (target, title = target.getAttribute('data-navigator')) => {
 
   main.innerHTML = main.innerHTML !== currentTab.content? currentTab.content: main.innerHTML
   document.querySelector('meta[name="theme-color"]').setAttribute('content',
-    getComputedStyle(document.documentElement).getPropertyValue(`--${tabTitle}-bg`))
+    getComputedStyle(docElem).getPropertyValue(`--${tabTitle}-bg`))
 
   if (!target.classList.contains('active')) {
     let activeLink = document.querySelector('.active')
@@ -68,7 +69,7 @@ document.addEventListener(
     restoreTab()
     positionSocialIcons()
     document.body.style.setProperty('transition', 'background-color 1s ease .1s')
-    document.documentElement.style.setProperty('transition', 'background-color .3s ease')
+    docElem.style.setProperty('transition', 'background-color .3s ease')
   })
 
 window.addEventListener('resize', positionSocialIcons)
