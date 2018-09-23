@@ -12,8 +12,8 @@ const data = {
     content: `
     <h1>about me</h1>
     <p>lover of - unicorns · purples · donuts</p>
-    <p>I'm Olaolu Olawuyi, a student of the University of Lagos, Nigeria. I live a simple life, I love being optimistic about things and I smile a lot. I explore my "funtography" skills when I'm not busy or in front of my laptop. I'm an impostor, and yeah, I'm a July born - July 01.</p>
-    <p>As a web developer, I've had 7+ years of experience building websites and applications ranging from simple to very complex ones. I focus on creating blazing fast and very elegant user experiences. I currently work as the Lead Front-end Engineer at Conectar LLC and I'm a Technical Talent Partner at <a href="http://teenscancode.com.ng" rel="noopener" target="_blank">Teens Can Code Africa</a>, a non-profit organization helping to expand teens' access to technology through problem-solving and coding in Africa. In the past few years, I've worked with organizations like Pneuma media, MrShopperHQ and a bunch to deliver services and solutions. I'm also the creator of the famous <a href="https://marketplace.visualstudio.com/items?itemName=whizkydee.material-palenight-theme" rel="noopener" target="_blank">Palenight theme</a> for VS Code with over 200K installs currently.</p>
+    <p>I'm Olaolu Olawuyi, a creative currently based in Lagos, Nigeria. I live a simple life, I love being optimistic about things and I smile a lot. I explore my "funtography" skills when I'm not busy or in front of my laptop. I'm an impostor, and yeah, I'm a July born - July 01.</p>
+    <p>As a developer, I've had 7+ years of experience building websites and applications ranging from basic to very complex ones. I focus on creating blazing fast and very elegant user experiences. I currently head the front-end engineering team at Conectar LLC and I'm a Technical Talent Partner at <a href="http://teenscancode.com.ng" rel="noopener" target="_blank">Teens Can Code Africa</a>, a non-profit organization helping to expand teens' access to technology through problem-solving and coding in Africa. In the past few years, I've worked with several organizations to deliver services and solutions. I'm also the creator of the famous <a href="https://marketplace.visualstudio.com/items?itemName=whizkydee.material-palenight-theme" rel="noopener" target="_blank">Palenight theme</a> for VS Code with hundreds of thousands of installs.</p>
     <p>I love to build applications in core <b>JavaScript</b>. I use frameworks like React, Node.js and a bunch. I'm currently open to ideas and very flexible remote or contract work.</p>
     <p>Love my work? A box of unicorn donuts would be nice 😊. Please <a href="https://bit.ly/payOlaolu" target="_blank" rel="noopener">donate</a>.</p>
     `,
@@ -25,9 +25,9 @@ const data = {
     <form action="https://formspree.io/mrolaolu@gmail.com"
       method="POST">
       <input type="hidden" name="_subject" value="Message from olaolu.me!">
-      <input title="Name should be at least three characters long and contain only letters."
+      <input title="Name should be at least three characters long, not exceed   70 characters and contain only letters."
         type="text" name="name" placeholder="Your Name" required pattern="[A-Za-z]{3,70}">
-      <input type="email" name="_replyto" placeholder="Email Address" required minlength="5">
+      <input type="email" name="_replyto" placeholder="Email Address" required minlength="5" maxlength="254">
       <textarea placeholder="Your Message" name="message" rows="7" required minlength="30"></textarea>
       <input type="submit" value="shoot!" id="submit">
       <span>or <a href="https://github.com/whizkydee/ama" target="_blank" rel="noopener">ask me anything</a> instead.</span>
@@ -35,4 +35,4 @@ const data = {
     `,
     tabId: 'contact'
   }
-}
+};
