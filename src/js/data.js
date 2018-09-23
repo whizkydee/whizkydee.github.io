@@ -25,7 +25,7 @@ const data = {
     <form action="https://formspree.io/mrolaolu@gmail.com"
       method="POST">
       <input type="hidden" name="_subject" value="Message from olaolu.me!">
-      <input title="Name should be at least three characters long, not exceed   70 characters and contain only letters."
+      <input title="Name should be at least three characters long, not exceed 70 characters and contain only letters."
         type="text" name="name" placeholder="Your Name" required pattern="[A-Za-z]{3,70}">
       <input type="email" name="_replyto" placeholder="Email Address" required minlength="5" maxlength="254">
       <textarea placeholder="Your Message" name="message" rows="7" required minlength="30"></textarea>
