@@ -37,15 +37,15 @@ html {
 }
 
 body {
+  width: 98vw;
+  height: 95vh;
+  color: $off_white;
   align-self: center;
+  overflow-y: scroll;
   justify-content: center;
   background-color: #7e57c2;
-  background-color: var(--home-bg);
   @include border-radius(3px);
-  overflow-y: scroll;
-  color: $off_white;
-  height: 95vh;
-  width: 98vw;
+  background-color: var(--home-bg);
   @media (min-width: 1024px)
   and (min-height: 600px) {
     overflow-y: auto;
