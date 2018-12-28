@@ -27,13 +27,16 @@ html {
   height: 100vh;
   background-color: $color_dark;
   background-color: var(--home-border);
+
   @media (max-width: 700px) {
     font-size: 14.5px;
   }
+
   @media (orientation: landscape) and
   (min-height: 700px), (max-height: 635px) {
     overflow: auto;
   }
+
 }
 
 body {
@@ -46,33 +49,39 @@ body {
   background-color: #7e57c2;
   @include border-radius(3px);
   background-color: var(--home-bg);
-  @media (min-width: 1024px)
-  and (min-height: 600px) {
+
+  @media (min-width: 1024px) and (min-height: 600px) {
     overflow-y: auto;
   }
+
   @media (max-width: 700px) {
     height: 97vh;
     width: 96vw;
   }
+
   &::-webkit-scrollbar {
     height: 10px;
     width: 1.5px;
     border-radius: 0px;
     -webkit-appearance: none;
-    background: transparentize($white, 0.5);
+    background: rgba($white, .5);
   }
+
   &::-webkit-scrollbar-track {
     border-radius: 0px;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(#000, .1);
   }
+
   &::-webkit-scrollbar-thumb {
     cursor: pointer;
-    transition: 0.2s;
+    transition: .2s;
     border-radius: 5px;
     background: $white;
+
     &:window-inactive {
-      background: transparentize($white, 0.6);
+      background: transparentize($white, .6);
     }
+
     &:hover {
       background: $white;
     }
@@ -85,51 +94,62 @@ main > h1 {
 }
 
 header {
+  display: flex;
   position: relative;
   padding: 30px 50px;
-  display: flex;
   justify-content: space-between;
+
   @media (max-width: 840px) {
     padding: 30px;
   }
+
   @media (max-width: 700px) {
-    padding-right: 20px;
     padding-left: 20px;
+    padding-right: 20px;
   }
+
   h3 {
-    padding: 0;
     margin: 0;
+    padding: 0;
+
     &:after {
-      color: var(--color-fade);
       content: '.';
+      color: var(--color-fade);
     }
   }
 }
 
 nav {
-  @media (max-width: 700px) {
-    align-self: center;
-    font-size: .9em;
-  }
   --active-color: rgba(238, 255, 255, .2);
   position: relative;
-  ul {
-    padding: 0;
-    margin: 0;
+
+  @media (max-width: 700px) {
+    font-size: .9em;
+    align-self: center;
   }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
   li {
-    display: inline-flex;
-    position: relative;
     margin-right: 10px;
+    position: relative;
+    display: inline-flex;
     @media (max-width: 700px) { margin-right: 5px; }
+
     &:last-of-type { margin-right: 0; }
+
     a {
-      @include transition(border-color .3s linear);
-      border-bottom: 2px solid transparent;
       display: block;
+      border-bottom: 2px solid transparent;
+      @include transition(border-color .3s linear);
+
       &:hover {
         border-color: var(--active-color);
       }
+
       &.active {
         border-color: var(--active-color);
         font-weight: 900;
@@ -139,59 +159,70 @@ nav {
 }
 
 main {
-  margin: 30px 0 50px 0;
-  padding: 20px 50px;
-  position: relative;
   text-align: left;
+  position: relative;
+  padding: 20px 50px;
+  margin: 30px 0 50px 0;
+
   @media (max-width: 840px) {
-    padding-right: 30px;
     padding-left: 30px;
+    padding-right: 30px;
   }
+
   @media (max-width: 700px) {
-    padding-right: 20px;
-    padding-left: 20px;
     font-size: .9em;
+    padding-left: 20px;
+    padding-right: 20px;
   }
+
   &:not(.home) {
     a, b {
       font-weight: 600;
     }
   }
-  &.about {
-    @media (min-width: 1000px) {
-      p {
-        font-size: .96em;
-        &:nth-of-type(1) {
-          font-size: .9em;
-          margin: .2em 0;
-          line-height: .9;
-        }
+
+  @media (min-width: 1000px) {
+    &.about p {
+      font-size: .96em;
+
+      &:nth-of-type(1) {
+        font-size: .9em;
+        margin: .2em 0;
+        line-height: .9;
       }
     }
   }
+
   a {
     font-weight: 900;
+
     &[href="/#about"]:after {
-      content: url(../../images/arrow-right.svg);
       vertical-align: 0px;
+      content: url(../../images/arrow-right.svg);
     }
   }
+
   h1 {
-    text-transform: capitalize;
-    position: relative;
     line-height: 1.5;
+    position: relative;
+    text-transform: capitalize;
+
     span {
       color: var(--color-fade);
     }
   }
+
   p {
-    position: relative;
-    text-align: left;
-    line-height: 2;
     width: 70%;
+    margin: .7em 0;
+    text-align: left;
+    line-height: 1.95;
+    position: relative;
+
     @media (max-width: 1070px) {
       width: 90%;
     }
+
     @media (max-width: 700px) {
       width: 100%;
     }
@@ -199,42 +230,51 @@ main {
 }
 
 aside {
-  margin: 30vh auto 20px;
+  width: 100%;
+  display: none;
   text-align: center;
   position: relative;
-  display: none;
-  width: 100%;
+  margin: 30vh auto 20px;
 }
 
 .home aside {
   display: flex;
   justify-content: center;
+
   a {
+    font-size: .75em;
+    font-weight: 600;
+    display: inline-block;
+    letter-spacing: .06em;
     @include transition(none);
     text-transform: uppercase;
-    letter-spacing: .06em;
-    display: inline-block;
-    margin-right: 15px;
-    font-weight: 600;
-    font-size: .75em;
+
+    &:not(:nth-of-type(4)) {
+      margin-right: 15px;
+    }
+
     @media (max-width: 420px) {
-      margin-right: 30px;
       font-size: .65em;
-      &:last-of-type { margin-right: 0; }
+
+      &:not(:last-of-type) {
+        margin-right: 30px;
+      }
+
       span {
         display: none;
       }
     }
-    &:nth-of-type(4) { margin-right: 0; }
+
     svg {
-      vertical-align: -2px;
-      margin-right: 5px;
-      fill: $off_white;
-      height: 12px;
       width: 14px;
+      height: 12px;
+      fill: $off_white;
+      margin-right: 5px;
+      vertical-align: -2px;
+
       @media (max-width: 420px) {
-        @include transform(scale(1.3));
         vertical-align: text-bottom;
+        @include transform(scale(1.3));
       }
     }
   }

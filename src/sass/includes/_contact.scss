@@ -1,8 +1,8 @@
 @include placeholdercolor;
 
 form > *:not([type="submit"]) {
-  margin-bottom: 15px;
   position: relative;
+  margin-bottom: 15px;
 }
 
 textarea,
@@ -16,9 +16,11 @@ input:not([type="submit"]) {
   background-color: transparent;
   border-color: var(--form-base);
   @include transition(border-color .2s ease);
+
   @media (max-width: 1080px) {
     width: 65vw;
   }
+
   @media (max-width: 700px) {
     width: 80vw;
   }
@@ -30,14 +32,15 @@ input:not([type="submit"]):focus {
 }
 
 input[type="submit"] {
-  background-color: var(--form-base);
-  outline: 2px solid transparent;
-  border: 2px solid transparent;
-  transition: all 1s ease;
-  outline-offset: 1px;
-  padding: 10px 20px;
-  margin-right: 5px;
   color: #eeffff;
+  margin-right: 5px;
+  padding: 10px 20px;
+  outline-offset: 1px;
+  transition: all 1s ease;
+  border: 2px solid transparent;
+  outline: 2px solid transparent;
+  background-color: var(--form-base);
+
   &:hover {
     outline-color: rgba(238, 255, 255, .1);
   }
