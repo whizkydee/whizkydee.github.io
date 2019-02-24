@@ -12,10 +12,9 @@ const data = {
     content: `
     <h1>about me</h1>
     <p>lover of - unicorns · purples · donuts</p>
-    <p>I'm a creative currently based in Lagos, Nigeria; living a simple life being optimistic about things and smiling most of the time. When I'm not in front of my computer, I like to explore my &lt;what I call&gt; "funtography" skills.</p>
-    <p>Over the past 8 years, I've built applications and products for businesses globally ranging from basic to very complex ones with focus on creating blazing fast and elegant user experiences. I previously led the front-end engineering team at Conectar LLC where we're building one of the biggest React applications in the world. I deliver quality stuff while doing freelance and consultation for a bunch of startups and organizations around the world. I also created the <a href="https://marketplace.visualstudio.com/items?itemName=whizkydee.material-palenight-theme" rel="noopener" target="_blank">Palenight theme</a> for VS Code with hundreds of thousands of downloads.</p>
-    <p>I'm passionate about web performance and JavaScript applications. Open for consultation, ideas and flexible remote or contract work. Say Hi!</p>
-    <p>Love my work? A box of unicorn donuts would be nice 😊. Hey! You might want to <a href="https://bit.ly/payOlaolu" target="_blank" rel="noopener">donate</a>.</p>
+    <p>I'm a creative currently based in Lagos, Nigeria; living a simple life being optimistic about things and smiling most of the time. When I'm not in front of my computer, I like to explore (what I call) "funtography" skills.</p>
+    <p>Over the past 8 years, I've built products for businesses globally ranging from basic websites to very complex applications with focus on creating blazing fast and elegant user experiences. I previously led the front-end engineering team at Conectar LLC where we're building one of the biggest React applications in the world. I deliver quality stuff while doing freelance and consultation for a bunch of startups and organizations around the world. I also created the <a href="https://marketplace.visualstudio.com/items?itemName=whizkydee.material-palenight-theme" rel="noopener" target="_blank">Palenight theme</a> for VS Code with hundreds of thousands of downloads.</p>
+    <p>I'm passionate about web performance and JavaScript applications. Open for consultation, ideas and remote or contract work. Say Hi!</p>
     `,
     tabId: 'about'
   },
