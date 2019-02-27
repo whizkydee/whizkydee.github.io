@@ -2,20 +2,32 @@
 const body = document.body,
   docElem = document.documentElement
 const routeTo = (target, title = target.getAttribute('data-navigator')) => {
-  let tabTitle = title
-    , currentTab = data[tabTitle]
-    , main = document.querySelector('main')
+  let tabTitle = title,
+    currentTab = data[tabTitle],
+    main = document.querySelector('main')
 
   docElem.style.setProperty('background-color', `var(--${tabTitle}-border)`)
-  document.title = `${title.charAt(0).toUpperCase() + title.slice(1)} · Olaolu Olawuyi`
+  document.title = `${title.charAt(0).toUpperCase() +
+    title.slice(1)} · Olaolu Olawuyi`
   body.style.setProperty('background-color', `var(--${tabTitle}-bg)`)
 
-  body.className = body.className !== currentTab['tabId'] ? currentTab['tabId'] : body.className
-  main.className = main.className !== currentTab['tabId'] ? currentTab['tabId'] : main.className
+  body.className =
+    body.className !== currentTab['tabId']
+      ? currentTab['tabId']
+      : body.className
+  main.className =
+    main.className !== currentTab['tabId']
+      ? currentTab['tabId']
+      : main.className
 
-  main.innerHTML = main.innerHTML !== currentTab.content ? currentTab.content : main.innerHTML
-  document.querySelector('meta[name="theme-color"]').setAttribute('content',
-    getComputedStyle(docElem).getPropertyValue(`--${tabTitle}-bg`))
+  main.innerHTML =
+    main.innerHTML !== currentTab.content ? currentTab.content : main.innerHTML
+  document
+    .querySelector('meta[name="theme-color"]')
+    .setAttribute(
+      'content',
+      getComputedStyle(docElem).getPropertyValue(`--${tabTitle}-bg`)
+    )
 
   if (!target.classList.contains('active')) {
     let activeLink = document.querySelector('.active')
@@ -26,9 +38,9 @@ const routeTo = (target, title = target.getAttribute('data-navigator')) => {
 }
 
 const navigators = [].slice.call(document.querySelectorAll('[data-navigator]'))
-const hash = location.hash.replace('#', '')
-  , pages = ['home', 'about', 'contact']
-  , aboutLink = navigators[1]
+const hash = location.hash.replace('#', ''),
+  pages = ['home', 'about', 'contact'],
+  aboutLink = navigators[1]
 
 if (!pages.includes(hash) || !hash) navigators[0].className = 'active'
 
@@ -49,27 +61,30 @@ window.addEventListener('hashchange', () => {
 })
 
 const positionSocialIcons = () => {
-  let elemsHeight = document.querySelector('header').clientHeight
-    + document.querySelector('main').clientHeight
-    , bodyHeight = document.body.clientHeight
-    , availHeight = bodyHeight - elemsHeight
-    , social = document.querySelector('aside')
+  let elemsHeight =
+      document.querySelector('header').clientHeight +
+      document.querySelector('main').clientHeight,
+    bodyHeight = document.body.clientHeight,
+    availHeight = bodyHeight - elemsHeight,
+    social = document.querySelector('aside')
 
   if (bodyHeight > elemsHeight) {
     social.style.marginTop = window.matchMedia('(orientation: portrait)')
-      .matches ? `${availHeight - 130}px` : `${availHeight - 70}px`
+      .matches
+      ? `${availHeight - 130}px`
+      : `${availHeight - 70}px`
   }
 }
 
-document.querySelector('header > a')
+document
+  .querySelector('header > a')
   .addEventListener('click', () => navigators[0].click())
 
-document.addEventListener(
-  'DOMContentLoaded', () => {
-    restoreTab()
-    positionSocialIcons()
-    document.body.style.setProperty('transition', 'background-color 1s ease .1s')
-    docElem.style.setProperty('transition', 'background-color .3s ease')
-  })
+document.addEventListener('DOMContentLoaded', () => {
+  restoreTab()
+  positionSocialIcons()
+  document.body.style.setProperty('transition', 'background-color 1s ease .1s')
+  docElem.style.setProperty('transition', 'background-color .3s ease')
+})
 
 window.addEventListener('resize', positionSocialIcons)
