@@ -42,7 +42,8 @@ input[type="submit"] {
   outline: 2px solid transparent;
   background-color: var(--form-base);
 
-  &:hover {
+  &:hover,
+  &:focus {
     outline-color: rgba(238, 255, 255, .1);
   }
 }

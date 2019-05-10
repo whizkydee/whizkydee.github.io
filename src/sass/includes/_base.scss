@@ -1,16 +1,13 @@
 * {
   @include selectnone;
   @include box-sizing;
+  outline-width: 2px;
   font-family: $basefont;
-
-  &:not(input) {
-    outline: 0 !important;
-  }
+  outline-color: $off_white;
 
   &:before,
   &:after {
     @include box-sizing;
-    outline: 0 !important;
   }
 }
 
